@@ -53,7 +53,7 @@ class Instruction extends Component {
 
   render () {
       return (
-        <div>
+        <div style={{ 'textAlign': 'start' }}>
         <Tabs tabBarExtraContent={operations}>
           <TabPane tab="展示" key="1">
           <Descriptions title="基本信息" size={this.state.size}>

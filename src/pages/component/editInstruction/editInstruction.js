@@ -1,8 +1,8 @@
 import { Form, Icon, Input } from 'antd';
 import React, { Component } from 'react'; 
-
   
   class editInstructionForm extends Component {
+    editInstructionForm = Form.create({})(editInstructionForm);
     constructor (props) {
         super(props)
         this.state = {
@@ -22,7 +22,9 @@ import React, { Component } from 'react';
             {
               name:'接口描述'
             }
-          ]
+          ],
+          requestList:[],
+          responseList: []
         }
     }
   
@@ -41,19 +43,20 @@ import React, { Component } from 'react';
         <div>主要信息设置</div>
         <div>
         <Form layout="inline" onSubmit={this.handleSubmit}>
-          <Form.Item >
-              <Input
-                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Username"
-              />
-          </Form.Item>
-          <Form.Item >
-              <Input
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                type="password"
-                placeholder="Password"
-              />
-          </Form.Item>
+        {
+            this.state.labelList.map((item, index) => {
+                return (
+                    <Form.Item 
+                    key={ index }
+                    label= {item.name }>
+                    <Input
+                      prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      placeholder={ item.name }
+                    />
+                </Form.Item>
+                )
+            })
+        }  
         </Form>
         </div>
         <div>
@@ -77,7 +80,7 @@ import React, { Component } from 'react';
         <div>
         <div>返回参数设置</div>
         <Form layout="inline" onSubmit={this.handleSubmit}>
-        <Form.Item label="接口名称">
+        <Form.Item label={this.state.labelList[0].name}>
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Username"
