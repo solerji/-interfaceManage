@@ -1,4 +1,4 @@
-import { List } from 'antd';
+import { List, Button } from 'antd';
 import React, { Component } from 'react'; 
 
 class InterfaceList extends Component {
@@ -26,7 +26,7 @@ class InterfaceList extends Component {
           bordered
           dataSource={this.state.listNames}
           renderItem={item => (
-            <List.Item actions={[<a key="list-loadmore-edit">新增</a>, <a key="list-loadmore-more">删除</a>]}>
+            <List.Item actions={[<Button key="list-loadmore-edit">新增</Button>, <Button key="list-loadmore-more">删除</Button>]}>
             {item.name}
             </List.Item>
       )}/>

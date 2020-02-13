@@ -12,8 +12,7 @@ class instructionTable extends Component {
             {
               title: '参数名',
               dataIndex: 'name',
-              key: 'name',
-              render: text => <a>{text}</a>,
+              key: 'name'
             },
             {
               title: '参数值',
@@ -35,8 +34,7 @@ class instructionTable extends Component {
             {
               title: '名称',
               dataIndex: 'name',
-              key: 'name',
-              render: text => <a>{text}</a>,
+              key: 'name'
             },
             {
               title: '类型',
@@ -63,8 +61,7 @@ class instructionTable extends Component {
           {
             title: '名称',
             dataIndex: 'name',
-            key: 'name',
-            render: text => <a>{text}</a>,
+            key: 'name'
           },
           {
             title: '类型',

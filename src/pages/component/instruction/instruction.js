@@ -14,33 +14,28 @@ class Instruction extends Component {
      labelList:[
        {
          name: '接口名称',
-         ename: 'interfaceName'
+         ename: 'interfaceName',
+         instruction: '接口一'
        },
        {
          name:'接口类型',
-         ename: 'interfaceClass'
+         ename: 'interfaceClass',
+         instruction: 'get'
        },
        {
          name: '创建时间',
-         ename: 'interfaceTime'
+         ename: 'interfaceTime',
+         instruction: '20190102'
        },
        {
          name: '创建人',
-         ename: 'createPeople'
+         ename: 'createPeople',
+         instruction: 'solerji'
        },
        {
          name: '接口描述',
-         ename: 'interfaceDetail'
-       }
-     ],
-     description: [
-       {
-         id: '1',
-         interfaceName: '第一个接口',
-         interfaceClass:'get',
-         interfaceTime: '',
-         createPeople: '',
-         interfaceDetail: ''
+         ename: 'interfaceDetail',
+         instruction: '这是一个好用的接口'
        }
      ]
     };
@@ -57,11 +52,17 @@ class Instruction extends Component {
         <Tabs tabBarExtraContent={operations}>
           <TabPane tab="展示" key="1">
           <Descriptions title="基本信息" size={this.state.size}>
-            <Descriptions.Item label="Product">第一个接口</Descriptions.Item>
-            <Descriptions.Item label="Billing">get</Descriptions.Item>
-            <Descriptions.Item label="time">18:00:00</Descriptions.Item>
-            <Descriptions.Item label="Amount">solerji</Descriptions.Item>
-            <Descriptions.Item label="Discount">这是一个及其好用的接口管理器</Descriptions.Item>
+            {
+              this.state.labelList.map((item, index) => {
+                  return (
+                      <Descriptions.Item 
+                      key={ index }
+                      label= {item.name }>
+                      { item.instruction }
+                  </Descriptions.Item>
+                  )
+              })
+            } 
           </Descriptions>
           <InstructionTable></InstructionTable>
           </TabPane>
