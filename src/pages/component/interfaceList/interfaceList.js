@@ -1,5 +1,6 @@
-import { List, Button } from 'antd';
+import { Button, Tree } from 'antd';
 import React, { Component } from 'react';
+const { TreeNode, DirectoryTree } = Tree;
 
 class InterfaceList extends Component {
   constructor(props) {
@@ -19,6 +20,14 @@ class InterfaceList extends Component {
     };
   }
 
+  onSelect = (keys, event) => {
+    console.log('Trigger Select', keys, event);
+  };
+
+  onExpand = () => {
+    console.log('Trigger Expand');
+  };
+
   editItem() {}
 
   delItem() {}
@@ -26,21 +35,16 @@ class InterfaceList extends Component {
   render() {
     return (
       <div>
-        <List
-          header={<div>所有分类</div>}
-          bordered
-          dataSource={this.state.listNames}
-          renderItem={item => (
-            <List.Item
-              actions={[
-                <Button onClick={() => this.editItem()}>编辑</Button>,
-                <Button onClick={() => this.delItem()}>删除</Button>,
-              ]}
-            >
-              {item.name}
-            </List.Item>
-          )}
-        />
+      <DirectoryTree multiple defaultExpandAll onSelect={this.onSelect} onExpand={this.onExpand}>
+      <TreeNode title="接口一" key="0-0">
+        <TreeNode title="John Brown" key="0-0-0" isLeaf />
+        <TreeNode title="2222" key="0-0-1" isLeaf />
+      </TreeNode>
+      <TreeNode title="接口二" key="0-1">
+        <TreeNode title="22222" key="0-1-0" isLeaf />
+        <TreeNode title="333333" key="0-1-1" isLeaf />
+      </TreeNode>
+    </DirectoryTree>
       </div>
     );
   }

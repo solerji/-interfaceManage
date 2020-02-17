@@ -1,7 +1,7 @@
 import { Form, Input, DatePicker, InputNumber, Select } from 'antd';
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import EditableFormTable from './editTable'
-  
+
 const { Option } = Select
 
   class editInstructionForm extends Component {
@@ -35,7 +35,7 @@ const { Option } = Select
           responseList: []
         }
     }
-  
+
     handleSubmit = e => {
       e.preventDefault();
       this.props.form.validateFields((err, values) => {
@@ -68,7 +68,7 @@ const { Option } = Select
           return <Input />
     }
     }
-  
+
     render() {
       return (
         <div>
@@ -78,14 +78,15 @@ const { Option } = Select
         {
             this.state.labelList.map((item, index) => {
                 return (
-                    <Form.Item 
+                    <Form.Item
                     key={ index }
                     label= {item.name }>
+                    pl
                    {(this.switchItem(item))}
                 </Form.Item>
                 )
             })
-        }  
+        }
         </Form>
         </div>
         <div>
