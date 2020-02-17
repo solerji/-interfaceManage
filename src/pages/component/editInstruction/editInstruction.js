@@ -81,7 +81,6 @@ const { Option } = Select
                     <Form.Item
                     key={ index }
                     label= {item.name }>
-                    pl
                    {(this.switchItem(item))}
                 </Form.Item>
                 )
