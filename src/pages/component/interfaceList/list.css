@@ -1,0 +1,3 @@
+:global(.ant-tree.ant-tree-directory > li span.ant-tree-node-content-wrapper.ant-tree-node-selected, .ant-tree.ant-tree-directory .ant-tree-child-tree > li span.ant-tree-node-content-wrapper.ant-tree-node-selected) {
+  background-color: cadetblue;
+}

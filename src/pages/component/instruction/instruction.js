@@ -1,9 +1,9 @@
 import { Button, Descriptions, Tabs, Table, Modal } from 'antd';
 import React, { Component } from 'react';
-import Link from 'umi/link';
 import InstructionTable from './instructionTable/instructionTable';
 import EditInstructionForm from '../editInstruction/editInstruction';
 import InstructionFrom from './instructionForm/instructionFrom'
+import style from './instructionTable/table.css'
 
 const { TabPane } = Tabs;
 
@@ -98,15 +98,15 @@ class Instruction extends Component {
 
   render() {
     const operations = (
-      <Button type="primary" onClick={() => this.handleClick()}>
+      <Button  onClick={() => this.handleClick()}>
         新增接口
       </Button>
     );
 
     return (
       <div style={{ textAlign: 'start' }}>
-        <Tabs tabBarExtraContent={operations}>
-          <TabPane tab="全部接口" key="1">
+        <Tabs tabBarExtraContent={operations} type="card">
+          <TabPane tab="全部接口" key="1" >
             <Table
               columns={this.state.interfaceColumns}
               dataSource={this.state.interfaceData}
@@ -115,7 +115,7 @@ class Instruction extends Component {
             ></Table>
           </TabPane>
           <TabPane tab="展示" key="2">
-            <Descriptions title="基本信息" size={this.state.size}>
+            <Descriptions  title="基本信息" size={this.state.size}>
               {this.state.labelList.map((item, index) => {
                 return (
                   <Descriptions.Item key={index} label={item.name}>
@@ -132,7 +132,6 @@ class Instruction extends Component {
         </Tabs>
         <div></div>
         <div>
-          <Link to="/interface">进入接口测试页面</Link>
           <Modal
             title="新增接口"
             visible={this.state.visible}

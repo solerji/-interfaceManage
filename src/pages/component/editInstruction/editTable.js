@@ -1,5 +1,6 @@
 import { Table, Input, InputNumber, Popconfirm, Form, Button } from 'antd';
 import React from 'react'
+import style from './edit.css'
 
 const data = [];
 for (let i = 0; i < 5; i++) {
@@ -198,7 +199,7 @@ class EditableTable extends React.Component {
 
     return (
       <EditableContext.Provider value={this.props.form}>
-        <Button onClick={this.handleAdd} type="primary" style={{ marginBottom: 16 }}>
+        <Button className={ style.addBtn } onClick={this.handleAdd}  style={{ marginBottom: 16 }}>
          新增
         </Button>
         <Table

@@ -4,10 +4,6 @@ exports.routes = [{
        {
           path: '/',
           component: '../pages/index'
-      },
-      {
-        path: '/introduce',
-        component: '../pages/introduce/introduce'
-    }
+      }
     ],
 }]

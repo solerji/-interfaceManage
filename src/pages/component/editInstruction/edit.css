@@ -1,0 +1,27 @@
+.font {
+  font-size: 17px;
+  color: white;
+  background-color: cadetblue;
+  margin: 10px  0;
+}
+
+.addBtn {
+  float: right;
+  background-color: cadetblue;
+  color: white ;
+  border: 0 1px cadetblue;
+}
+
+.distance {
+  margin-top: 20px;
+}
+
+:global(.ant-btn:not([disabled]):hover) {
+  color: cadetblue;
+  border-color: cadetblue;
+}
+
+:global(.ant-btn:focus) {
+  color: cadetblue !important;
+  border-color: cadetblue !important;
+}

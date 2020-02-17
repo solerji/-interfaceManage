@@ -1,0 +1,13 @@
+.font {
+  font-size: 18px;
+  color: white;
+  background-color: cadetblue;
+}
+
+.ant-descriptions-title {
+  color: white;
+}
+
+:global(.ant-tabs.ant-tabs-card .ant-tabs-card-bar .ant-tabs-tab) {
+  color: cadetblue;
+}

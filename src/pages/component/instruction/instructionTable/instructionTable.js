@@ -1,12 +1,13 @@
 import { Table } from 'antd';
 import React, { Component } from 'react';
+import style from './table.css'
 
 class instructionTable extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
-    
+
     render () {
         const headerColumns = [
             {
@@ -112,14 +113,14 @@ class instructionTable extends Component {
             }
           ];
           return (
-            <>
-            <span>Headers</span>
+            <div>
+            <span className={style.font}>Headers</span>
             <Table columns={headerColumns} dataSource={headerData} pagination={false} size="middle"  bordered />
-            <span>Body</span>
+            <span className={style.font}>Body</span>
             <Table columns={bodyColumns} dataSource={bodyData} pagination={false} size="middle" bordered />
-            <span>返回参数</span>
+            <span className={style.font}>返回参数</span>
             <Table columns={returnColumns} dataSource={returnData} pagination={false} size="middle" bordered/>
-            </>
+           </div>
           )
     }
 }

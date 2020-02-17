@@ -1,6 +1,7 @@
 import { Form, Input, DatePicker, InputNumber, Select } from 'antd';
 import React, { Component } from 'react';
 import EditableFormTable from './editTable'
+import style from './edit.css'
 
 const { Option } = Select
 
@@ -72,7 +73,7 @@ const { Option } = Select
     render() {
       return (
         <div>
-        <div>主要信息设置</div>
+        <span className={ style.font }>主要信息设置</span>
         <div>
         <Form layout="inline" onSubmit={this.handleSubmit}>
         {
@@ -88,12 +89,12 @@ const { Option } = Select
         }
         </Form>
         </div>
-        <div>
-        <div>请求参数设置</div>
+        <div className={ style.distance }>
+        <span className={ style.font }>请求参数设置</span>
         <EditableFormTable></EditableFormTable>
         </div>
-        <div>
-        <div>返回参数设置</div>
+        <div className={ style.distance }>
+        <span className={ style.font }>返回参数设置</span>
         <EditableFormTable></EditableFormTable>
         </div>
         </div>
