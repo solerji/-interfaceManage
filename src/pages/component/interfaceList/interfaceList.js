@@ -1,4 +1,4 @@
-import { Button, Menu, Icon } from 'antd';
+import { Menu, Icon } from 'antd';
 import React, { Component } from 'react';
 import style from './list.css'
 
@@ -15,15 +15,47 @@ class InterfaceList extends Component {
       {
         key: '1',
         name: '接口一',
+        level: 1,
+        isSidebar: true,
+        isMenu: true,
+        icon:'appstore'
       },
       {
         key: '2',
         name: '接口二',
+        level: 1,
+        isSidebar: true,
+        isMenu: true,
+        icon:'appstore'
       },
       {
         key: '3',
         name: '接口三',
+        level: 1,
+        isSidebar: true,
+        isMenu: true,
+        icon:'appstore'
       },
+      {
+        key: '1-1',
+        name: 'getName',
+        isChild: true,
+        parentId: '1',
+        level: 2,
+        icon: ''
+      },{
+        key: '3-1',
+        name: 'getBase',
+        isChild: true,
+        parentId: '3',
+        level: 2
+      },{
+        key: '3-2',
+        name: 'getTime',
+        isChild: true,
+        parentId: '3',
+        level: 2
+      }
      ]
     };
   }
@@ -37,6 +69,8 @@ class InterfaceList extends Component {
   delItem() {}
 
   render() {
+    const sidebar = this.state.menuList.filter(side=>side.isSidebar)
+    const childbar = this.state.menuList.filter(side=>side.isChild)
     return (
       <div>
       <Menu
@@ -45,43 +79,36 @@ class InterfaceList extends Component {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
-      >
-        <SubMenu
-          key="sub1"
-          title={
-            <span>
-              <Icon type="appstore" />
-              <span>接口分类一</span>
-            </span>
+      >{
+        sidebar.map(item=>{
+          if(item.isMenu){
+            return (
+              <SubMenu
+              key={item.key}
+              title={<span><span><Icon type={item.icon} /></span><span>{item.name}</span></span>}>
+              {
+                   childbar.map(child=>{
+                     if (child.parentId === item.key && child.isChild ) {
+                      return (
+                        <Menu.Item
+                        key={child.key}
+                        >{child.name}</Menu.Item>
+                      )
+                     }
+                    return null
+                   })
+              }
+              </SubMenu>
+            )
           }
-        >
-          <Menu.Item key="1">接口一</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-        </SubMenu>
-        <SubMenu
-          key="sub2"
-          title={
-            <span>
-              <Icon type="appstore" />
-              <span>Navigation Two</span>
-            </span>
-          }
-        >
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
-        </SubMenu>
-        <SubMenu
-          key="sub4"
-          title={
-            <span>
-              <Icon type="appstore" />
-              <span>Navigation Three</span>
-            </span>
-          }
-        >
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-        </SubMenu>
+          return (
+            <Menu.Item
+            key={item.key}
+            >
+            <span>{item.name}</span></Menu.Item>
+          )
+        })
+      }
       </Menu>
       </div>
     );

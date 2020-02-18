@@ -1,3 +1,10 @@
-:global(.ant-tree.ant-tree-directory > li span.ant-tree-node-content-wrapper.ant-tree-node-selected, .ant-tree.ant-tree-directory .ant-tree-child-tree > li span.ant-tree-node-content-wrapper.ant-tree-node-selected) {
+:global(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected) {
   background-color: cadetblue;
+  color: white;
+}
+:global(.ant-menu-submenu-selected) {
+  color: cadetblue;
+}
+:global(.ant-menu-item :hover, .ant-menu-item-active) {
+  color: cadetblue !important;
 }
