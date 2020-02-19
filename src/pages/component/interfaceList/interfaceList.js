@@ -1,5 +1,7 @@
 import { Menu, Icon } from 'antd';
 import React, { Component } from 'react';
+import * as service from '../../../service/api'
+import '../../../../mock/index'
 import style from './list.css'
 
 const { SubMenu } = Menu;
@@ -8,65 +10,21 @@ class InterfaceList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listNames: [
-
-      ],
-     menuList: [
-      {
-        key: '1',
-        name: '接口一',
-        level: 1,
-        isSidebar: true,
-        isMenu: true,
-        icon:'appstore'
-      },
-      {
-        key: '2',
-        name: '接口二',
-        level: 1,
-        isSidebar: true,
-        isMenu: true,
-        icon:'appstore'
-      },
-      {
-        key: '3',
-        name: '接口三',
-        level: 1,
-        isSidebar: true,
-        isMenu: true,
-        icon:'appstore'
-      },
-      {
-        key: '1-1',
-        name: 'getName',
-        isChild: true,
-        parentId: '1',
-        level: 2,
-        icon: ''
-      },{
-        key: '3-1',
-        name: 'getBase',
-        isChild: true,
-        parentId: '3',
-        level: 2
-      },{
-        key: '3-2',
-        name: 'getTime',
-        isChild: true,
-        parentId: '3',
-        level: 2
-      }
-     ]
+     menuList: []
     };
   }
 
-  handleClick = e => {
-    console.log('click ', e);
-  };
+  async componentDidMount () {
+    let datalist = await service.getInterfaceList()
+    this.setState({
+      menuList: datalist.data.list,
+    });
+  }
 
-  editItem() {}
-
-  delItem() {}
+  async handleClick (e) {
+    let res = await service.getInterfaceData(e.key)
+    console.log(e.key, res)
+  }
 
   render() {
     const sidebar = this.state.menuList.filter(side=>side.isSidebar)
@@ -77,7 +35,7 @@ class InterfaceList extends Component {
         onClick={this.handleClick}
         style={{ width: 256 }}
         defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        defaultOpenKeys={['1']}
         mode="inline"
       >{
         sidebar.map(item=>{
@@ -88,11 +46,11 @@ class InterfaceList extends Component {
               title={<span><span><Icon type={item.icon} /></span><span>{item.name}</span></span>}>
               {
                    childbar.map(child=>{
-                     if (child.parentId === item.key && child.isChild ) {
+                     if (child.parentId === item.key && child.isChild) {
                       return (
                         <Menu.Item
                         key={child.key}
-                        >{child.name}</Menu.Item>
+                        ><span>{child.name}</span></Menu.Item>
                       )
                      }
                     return null

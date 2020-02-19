@@ -1,4 +1,4 @@
-import { Button, Descriptions, Tabs, Table, Modal } from 'antd';
+import { Button, Descriptions, Tabs, Table, Modal, Icon } from 'antd';
 import React, { Component } from 'react';
 import InstructionTable from './instructionTable/instructionTable';
 import EditInstructionForm from '../editInstruction/editInstruction';
@@ -56,11 +56,16 @@ class Instruction extends Component {
           dataIndex: 'queryValue',
           key: 'queryValue',
         },
-
         {
           title: '备注',
           dataIndex: 'interfaceNote',
           key: 'interfaceNote',
+        },
+        {
+          title: 'Action',
+          dataIndex: '',
+          key: 'x',
+          render: () => <Icon type="delete"></Icon>,
         },
       ],
       interfaceData :[
@@ -71,7 +76,7 @@ class Instruction extends Component {
           interfaceClass: '接口一',
         },
       ],
-      visible: false,
+      visible: false
     };
   }
 

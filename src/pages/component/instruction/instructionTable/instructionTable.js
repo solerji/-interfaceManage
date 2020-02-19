@@ -85,9 +85,9 @@ class instructionTable extends Component {
             key: 'note'
           }
           ];
-        const headerData = [
+          const headerData = [
             {
-              key: '1',
+              key: '1-1',
               name: 'John Brown',
               value: 32,
               fill: 'No',
@@ -96,7 +96,7 @@ class instructionTable extends Component {
           ];
           const bodyData = [
             {
-              key: '1',
+              key: '1-1',
               name: 'John Brown',
               value: 32,
               fill: 'No',
@@ -105,7 +105,7 @@ class instructionTable extends Component {
           ];
           const returnData = [
             {
-              key: '1',
+              key: '1-1',
               name: 'John Brown',
               value: 32,
               fill: 'No',
