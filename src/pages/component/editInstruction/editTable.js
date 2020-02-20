@@ -62,31 +62,31 @@ class EditableTable extends React.Component {
       },
       {
         title: '类型',
-        dataIndex: 'type',
+        dataIndex: 'value',
         width: '10%',
         editable: true,
       },
       {
         title: '是否必须',
-        dataIndex: 'concentType',
+        dataIndex: 'fill',
         width: '15%',
         editable: true,
       },
       {
         title: '默认值',
-        dataIndex: 'concentType',
+        dataIndex: 'defaultValue',
         width: '15%',
         editable: true,
       },
       {
         title: '示例',
-        dataIndex: 'concentType',
+        dataIndex: 'example',
         width: '15%',
         editable: true,
       },
       {
         title: '备注',
-        dataIndex: 'description',
+        dataIndex: 'note',
         width: '30%',
         editable: true,
       },
@@ -165,10 +165,9 @@ class EditableTable extends React.Component {
     const { count, data } = this.state;
     const newData = {
       key: count,
-      name: `classname ${count}`,
+      name: ``,
       type: 32,
       concentType: '1',
-      description: `no. ${count}`,
     };
     this.setState({
       data: [...data, newData],

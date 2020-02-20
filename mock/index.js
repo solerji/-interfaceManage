@@ -72,6 +72,7 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'yes',
             note: 'none',
             interfaceClass: '接口一',
+            example: 'none'
         },
         ],
         body:[
@@ -82,7 +83,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口一'
+            interfaceClass: '接口一',
+            example: 'none'
           },
           {
             id: '14',
@@ -91,7 +93,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口一'
+            interfaceClass: '接口一',
+            example: 'none'
         },
         ],
         response:[
@@ -103,6 +106,7 @@ Mock.mock('/api/interfaceList','get', {
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口一',
+            example: 'none'
           },
           {
             id: '16',
@@ -112,6 +116,7 @@ Mock.mock('/api/interfaceList','get', {
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口一',
+            example: 'none'
         },
         ]
       },
@@ -134,7 +139,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
           },
           {
             id: '24',
@@ -143,7 +149,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
         },
         ],
         response:[
@@ -154,7 +161,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
           },
           {
             id: '26',
@@ -163,7 +171,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
         },
         ]
       },
@@ -184,7 +193,8 @@ Mock.mock('/api/interfaceList','get', {
             value: '',
             fill: 'No',
             note: 'none',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
           }
         ],
         body:[
@@ -195,7 +205,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
           },
           {
             id: '34',
@@ -204,7 +215,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
         },
         ],
         response:[
@@ -215,7 +227,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
           },
           {
             id: '36',
@@ -224,7 +237,8 @@ Mock.mock('/api/interfaceList','get', {
             fill: 'No',
             note: 'none',
             defaultValue:'1',
-            interfaceClass: '接口二'
+            interfaceClass: '接口二',
+            example: 'none'
          },
       ]
     }

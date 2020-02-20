@@ -134,11 +134,11 @@ class Instruction extends Component {
           <TabPane tab="展示" key="2">
             <Descriptions  title="基本信息" size={this.state.size}>
               {this.state.labelList.map((item, index) => {
-                return (
-                  <Descriptions.Item key={index} label={item.name}>
-                    {item.instruction}
-                  </Descriptions.Item>
-                );
+                  return (
+                    <Descriptions.Item key={index} label={item.name}>
+                      {item.instruction}
+                    </Descriptions.Item>
+                  )
               })}
             </Descriptions>
             <InstructionTable></InstructionTable>
