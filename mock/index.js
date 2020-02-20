@@ -56,24 +56,30 @@ Mock.mock('/api/interfaceList','get', {
     let data = [
       {
         key: '1-1',
+        parentId: '1',
         interfaceName: 'getName',
         queryValue: 'get',
         interfaceNote: 'none',
         interfaceClass: '接口一',
+        interfaceTime: '202009',
+        createPeople: 'solerji',
+        interfaceDetail: 'jiejeiejiie',
         headers:[
           {
             id: '1',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口一'
           },
           {
             id: '2',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口一',
         },
         ],
         body:[
@@ -83,7 +89,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口一'
           },
           {
             id: '2',
@@ -91,7 +98,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口一'
         },
         ],
         response:[
@@ -101,7 +109,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口一',
           },
           {
             id: '2',
@@ -109,30 +118,37 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口一',
         },
         ]
       },
       {
         key: '3-1',
+        parentId: '3',
         interfaceName: 'getBase',
         queryValue: 'get',
         interfaceNote: 'none',
         interfaceClass: '接口二',
+        interfaceTime: '202009',
+        createPeople: 'solerji',
+        interfaceDetail: 'jiejeiejiie',
         headers:[
           {
             id: '1',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口二'
         },
         ],
         body:[
@@ -142,7 +158,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
@@ -150,7 +167,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
         },
         ],
         response:[
@@ -160,7 +178,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
@@ -168,30 +187,37 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
         },
         ]
       },
       {
         key: '3-2',
+        parentId: '3',
         interfaceName: 'getTime',
         queryValue: 'get',
         interfaceNote: 'none',
         interfaceClass: '接口二',
+        interfaceTime: '202009',
+        createPeople: 'solerji',
+        interfaceDetail: 'jiejeiejiie',
         headers:[
           {
             id: '1',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
             name: 'John Brown',
             value: 32,
             fill: 'No',
-            note: 'none'
+            note: 'none',
+            interfaceClass: '接口二'
         },
         ],
         body:[
@@ -201,7 +227,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
@@ -209,7 +236,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
         },
         ],
         response:[
@@ -219,7 +247,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
           },
           {
             id: '2',
@@ -227,7 +256,8 @@ Mock.mock('/api/interfaceList','get', {
             value: 32,
             fill: 'No',
             note: 'none',
-            defaultValue:'1'
+            defaultValue:'1',
+            interfaceClass: '接口二'
          },
       ]
     }
@@ -243,3 +273,34 @@ Mock.mock('/api/interfaceList','get', {
       'message':'操作成功'
     }
     })
+
+    Mock.mock('/api/allInterface','get', {
+      'code':0,
+      'list': [
+        {
+          key: '1-1',
+          parentId: '1',
+          interfaceName: 'getName',
+          queryValue: 'get',
+          interfaceNote: 'none',
+          interfaceClass: '接口一'
+        },
+        {
+          key: '3-1',
+          parentId: '3',
+          interfaceName: 'getBase',
+          queryValue: 'get',
+          interfaceNote: 'none',
+          interfaceClass: '接口二',
+        },
+        {
+          key: '3-2',
+          parentId: '3',
+          interfaceName: 'getTime',
+          queryValue: 'get',
+          interfaceNote: 'none',
+          interfaceClass: '接口二',
+        },
+      ],
+         'message':'操作成功'
+      });

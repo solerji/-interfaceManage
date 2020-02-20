@@ -2,7 +2,10 @@ import { Button, Descriptions, Tabs, Table, Modal, Icon } from 'antd';
 import React, { Component } from 'react';
 import InstructionTable from './instructionTable/instructionTable';
 import EditInstructionForm from '../editInstruction/editInstruction';
-import InstructionFrom from './instructionForm/instructionFrom'
+import InstructionFrom from './instructionForm/instructionFrom';
+import * as service from '../../../service/api'
+import '../../../../mock/index'
+import { connect } from 'dva'
 import style from './instructionTable/table.css'
 
 const { TabPane } = Tabs;
@@ -15,28 +18,23 @@ class Instruction extends Component {
       labelList: [
         {
           name: '接口名称',
-          ename: 'interfaceName',
-          instruction: '接口一',
+          ename: 'interfaceName'
         },
         {
           name: '接口类型',
-          ename: 'interfaceClass',
-          instruction: 'get',
+          ename: 'interfaceClass'
         },
         {
           name: '创建时间',
-          ename: 'interfaceTime',
-          instruction: '20190102',
+          ename: 'interfaceTime'
         },
         {
           name: '创建人',
-          ename: 'createPeople',
-          instruction: 'solerji',
+          ename: 'createPeople'
         },
         {
           name: '接口描述',
-          ename: 'interfaceDetail',
-          instruction: '这是一个好用的接口',
+          ename: 'interfaceDetail'
         },
       ],
      interfaceColumns: [
@@ -68,16 +66,20 @@ class Instruction extends Component {
           render: () => <Icon type="delete"></Icon>,
         },
       ],
-      interfaceData :[
-        {
-          interfaceName: 'John Brown',
-          queryValue: 'get',
-          interfaceNote: 'none',
-          interfaceClass: '接口一',
-        },
-      ],
+      interfaceData :[],
       visible: false
     };
+  }
+
+  async componentDidMount () {
+    let datalist = await service.getAllInterface()
+    this.setState({
+      interfaceData: datalist.data.list,
+    });
+    this.setState({
+      interfaceData: datalist.data.list,
+    });
+    console.log(45454, this.props.interfaceList)
   }
 
   hideModal = () => {
@@ -90,15 +92,29 @@ class Instruction extends Component {
     this.setState({
       visible: true,
     });
-  };
+  }
 
   handleCreate = () => {
+    let count = 6
     let interfaceInfo = this.formRef.getItemsValue()
-    console.log(interfaceInfo)
-      this.state.interfaceData.push(interfaceInfo)
-      this.setState({
-        visible: false,
+    let id = interfaceInfo.interfaceClass
+    interfaceInfo.parentId = id
+    interfaceInfo.key = id+ '-' + count
+    this.state.interfaceData.push(interfaceInfo)
+    this.setState({
+      visible: false,
+    })
+  }
+
+  tabClick = (key) => {
+    if (key === '1') {
+      let res =  service.getAllInterface()
+      res.then(resdata => {
+        this.setState({
+          interfaceData: resdata.data.list,
+        })
       })
+    }
   }
 
   render() {
@@ -110,7 +126,7 @@ class Instruction extends Component {
 
     return (
       <div style={{ textAlign: 'start' }}>
-        <Tabs tabBarExtraContent={operations} type="card">
+        <Tabs tabBarExtraContent={operations} type="card" onTabClick={ this.tabClick }>
           <TabPane tab="全部接口" key="1" >
             <Table
               columns={this.state.interfaceColumns}
@@ -153,4 +169,14 @@ class Instruction extends Component {
   }
 }
 
-export default Instruction;
+const getData = (state) => {
+  console.log(2323, state.interfaceList.interface)
+  return {
+    interfaceList: state.interfaceList.interface,
+    header: state.interfaceList.interface.headers,
+    body: state.interfaceList.interface.body,
+    response: state.interfaceList.interface.response
+  }
+}
+
+export default connect(getData)(Instruction);

@@ -1,11 +1,11 @@
 import { Menu, Icon } from 'antd';
 import React, { Component } from 'react';
 import * as service from '../../../service/api'
+import { connect } from 'dva'
 import '../../../../mock/index'
 import style from './list.css'
 
 const { SubMenu } = Menu;
-
 class InterfaceList extends Component {
   constructor(props) {
     super(props);
@@ -21,9 +21,17 @@ class InterfaceList extends Component {
     });
   }
 
-  async handleClick (e) {
-    let res = await service.getInterfaceData(e.key)
-    console.log(e.key, res)
+   handleClick = (e) => {
+    let res =  service.getInterfaceData(e.key)
+    res.then(data => {
+      const { dispatch } = this.props
+      dispatch({
+        type:'interfaceList/datalist',
+        payload: {
+          interfaceData: data.data.list
+        }
+      })
+    })
   }
 
   render() {
@@ -73,4 +81,5 @@ class InterfaceList extends Component {
   }
 }
 
-export default InterfaceList;
+// export default InterfaceList;
+export default connect()(InterfaceList);

@@ -15,3 +15,11 @@ export function getInterfaceList(params) {
     params: params
   })
 }
+
+export function getAllInterface(params) {
+  return request ({
+    method: 'get',
+    url: '/api/allInterface',
+    params: params
+  })
+}
