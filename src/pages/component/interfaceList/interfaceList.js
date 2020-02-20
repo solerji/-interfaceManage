@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as service from '../../../service/api'
 import { connect } from 'dva'
 import '../../../../mock/index'
-import style from './list.css'
+import './list.css'
 
 const { SubMenu } = Menu;
 class InterfaceList extends Component {
@@ -81,5 +81,4 @@ class InterfaceList extends Component {
   }
 }
 
-// export default InterfaceList;
 export default connect()(InterfaceList);

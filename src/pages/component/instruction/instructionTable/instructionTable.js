@@ -1,11 +1,15 @@
 import { Table } from 'antd';
 import React, { Component } from 'react';
 import style from './table.css'
-
+import { connect } from 'dva'
 class instructionTable extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          headerData: [],
+          bodyData: [],
+          returnData: []
+        };
     }
 
     render () {
@@ -24,6 +28,11 @@ class instructionTable extends Component {
               title: '是否必须',
               dataIndex: 'fill',
               key: 'fill',
+            },
+            {
+              title: '示例',
+              dataIndex: 'example',
+              key: 'example'
             },
             {
               title: '备注',
@@ -53,6 +62,11 @@ class instructionTable extends Component {
               key: 'defaultValue'
             },
             {
+              title: '示例',
+              dataIndex: 'example',
+              key: 'example'
+            },
+            {
               title: '备注',
               dataIndex: 'note',
               key: 'note'
@@ -80,49 +94,37 @@ class instructionTable extends Component {
             key: 'defaultValue'
           },
           {
+            title: '示例',
+            dataIndex: 'example',
+            key: 'example'
+          },
+          {
             title: '备注',
             dataIndex: 'note',
             key: 'note'
           }
           ];
-          const headerData = [
-            {
-              key: '1-1',
-              name: 'John Brown',
-              value: 32,
-              fill: 'No',
-              note: 'none'
-            }
-          ];
-          const bodyData = [
-            {
-              key: '1-1',
-              name: 'John Brown',
-              value: 32,
-              fill: 'No',
-              note: 'none'
-            }
-          ];
-          const returnData = [
-            {
-              key: '1-1',
-              name: 'John Brown',
-              value: 32,
-              fill: 'No',
-              note: 'none'
-            }
-          ];
           return (
             <div>
             <span className={style.font}>Headers</span>
-            <Table columns={headerColumns} dataSource={headerData} pagination={false} size="middle"  bordered />
+            <Table columns={headerColumns} dataSource={this.props.header} pagination={false} size="middle"  bordered />
             <span className={style.font}>Body</span>
-            <Table columns={bodyColumns} dataSource={bodyData} pagination={false} size="middle" bordered />
+            <Table columns={bodyColumns} dataSource={this.props.body} pagination={false} size="middle" bordered />
             <span className={style.font}>返回参数</span>
-            <Table columns={returnColumns} dataSource={returnData} pagination={false} size="middle" bordered/>
+            <Table columns={returnColumns} dataSource={this.props.response} pagination={false} size="middle" bordered/>
            </div>
           )
     }
 }
 
-export default instructionTable
+const getData = (state) => {
+  return {
+    interfaceList: state.interfaceList.interface,
+    header: state.interfaceList.interface[0].headers,
+    body: state.interfaceList.interface[0].body,
+    response: state.interfaceList.interface[0].response
+  }
+}
+
+export default connect(getData)(instructionTable)
+

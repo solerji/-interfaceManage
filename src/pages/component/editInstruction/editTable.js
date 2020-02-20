@@ -2,15 +2,6 @@ import { Table, Input, InputNumber, Popconfirm, Form, Button } from 'antd';
 import React from 'react'
 import style from './edit.css'
 
-const data = [];
-for (let i = 0; i < 5; i++) {
-  data.push({
-    key: i.toString(),
-    name: `class ${i}`,
-    type: 32,
-    description: `备注 ${i}`,
-  });
-}
 const EditableContext = React.createContext();
 
 class EditableCell extends React.Component {
@@ -61,7 +52,7 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data, editingKey: '', count: 2 };
+    this.state = { data: props.data, editingKey: '', count: 2 };
     this.columns = [
       {
         title: '名称',
@@ -70,13 +61,25 @@ class EditableTable extends React.Component {
         editable: true,
       },
       {
-        title: 'Object',
+        title: '类型',
         dataIndex: 'type',
         width: '10%',
         editable: true,
       },
       {
-        title: 'concentType',
+        title: '是否必须',
+        dataIndex: 'concentType',
+        width: '15%',
+        editable: true,
+      },
+      {
+        title: '默认值',
+        dataIndex: 'concentType',
+        width: '15%',
+        editable: true,
+      },
+      {
+        title: '示例',
         dataIndex: 'concentType',
         width: '15%',
         editable: true,
@@ -215,6 +218,6 @@ class EditableTable extends React.Component {
   }
 }
 
-const EditableFormTable = Form.create()(EditableTable);
+const EditableFormTable = Form.create()(EditableTable)
 
 export default EditableFormTable

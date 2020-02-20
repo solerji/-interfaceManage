@@ -2,6 +2,7 @@ import { Form, Input, DatePicker, InputNumber, Select } from 'antd';
 import React, { Component } from 'react';
 import EditableFormTable from './editTable'
 import style from './edit.css'
+import { connect } from 'dva'
 
 const { Option } = Select
 
@@ -90,16 +91,29 @@ const { Option } = Select
         </Form>
         </div>
         <div className={ style.distance }>
-        <span className={ style.font }>请求参数设置</span>
-        <EditableFormTable></EditableFormTable>
+        <span className={ style.font }>Headers</span>
+        <EditableFormTable data= {this.props.header}></EditableFormTable>
         </div>
         <div className={ style.distance }>
-        <span className={ style.font }>返回参数设置</span>
-        <EditableFormTable></EditableFormTable>
+        <span className={ style.font }>Body</span>
+        <EditableFormTable data= {this.props.body}></EditableFormTable>
+        </div>
+        <div className={ style.distance }>
+        <span className={ style.font }>返回参数</span>
+        <EditableFormTable data= {this.props.response}></EditableFormTable>
         </div>
         </div>
       );
     }
   }
 
-  export default editInstructionForm
+  const getData = (state) => {
+    return {
+      interfaceList: state.interfaceList.interface,
+      header: state.interfaceList.interface[0].headers,
+      body: state.interfaceList.interface[0].body,
+      response: state.interfaceList.interface[0].response
+    }
+  }
+
+  export default connect(getData)(editInstructionForm)

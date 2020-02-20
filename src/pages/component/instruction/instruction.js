@@ -5,8 +5,8 @@ import EditInstructionForm from '../editInstruction/editInstruction';
 import InstructionFrom from './instructionForm/instructionFrom';
 import * as service from '../../../service/api'
 import '../../../../mock/index'
+import './instructionTable/table.css'
 import { connect } from 'dva'
-import style from './instructionTable/table.css'
 
 const { TabPane } = Tabs;
 
@@ -42,7 +42,7 @@ class Instruction extends Component {
           title: '接口名',
           dataIndex: 'interfaceName',
           key: 'interfaceName',
-          render: text => <a>{text}</a>,
+          render: text => <span>{text}</span>,
         },
         {
           title: '所属分类',
@@ -75,11 +75,7 @@ class Instruction extends Component {
     let datalist = await service.getAllInterface()
     this.setState({
       interfaceData: datalist.data.list,
-    });
-    this.setState({
-      interfaceData: datalist.data.list,
-    });
-    console.log(45454, this.props.interfaceList)
+    })
   }
 
   hideModal = () => {
@@ -108,7 +104,7 @@ class Instruction extends Component {
 
   tabClick = (key) => {
     if (key === '1') {
-      let res =  service.getAllInterface()
+      let res = service.getAllInterface()
       res.then(resdata => {
         this.setState({
           interfaceData: resdata.data.list,
@@ -170,13 +166,9 @@ class Instruction extends Component {
 }
 
 const getData = (state) => {
-  console.log(2323, state.interfaceList.interface)
   return {
-    interfaceList: state.interfaceList.interface,
-    header: state.interfaceList.interface.headers,
-    body: state.interfaceList.interface.body,
-    response: state.interfaceList.interface.response
+    interfaceList: state.interfaceList.interface
   }
 }
 
-export default connect(getData)(Instruction);
+export default connect(getData)(Instruction)

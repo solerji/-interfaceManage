@@ -66,36 +66,28 @@ Mock.mock('/api/interfaceList','get', {
         interfaceDetail: 'jiejeiejiie',
         headers:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
-            fill: 'No',
-            note: 'none',
-            interfaceClass: '接口一'
-          },
-          {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
-            fill: 'No',
+            id: '12',
+            name: 'token',
+            value: '',
+            fill: 'yes',
             note: 'none',
             interfaceClass: '接口一',
         },
         ],
         body:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '13',
+            name: 'age',
+            value: 'int',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口一'
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '14',
+            name: 'name',
+            value: 'string',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -104,18 +96,18 @@ Mock.mock('/api/interfaceList','get', {
         ],
         response:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '15',
+            name: 'code',
+            value: 'int',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口一',
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '16',
+            name: 'list',
+            value: 'array',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -133,38 +125,21 @@ Mock.mock('/api/interfaceList','get', {
         interfaceTime: '202009',
         createPeople: 'solerji',
         interfaceDetail: 'jiejeiejiie',
-        headers:[
-          {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
-            fill: 'No',
-            note: 'none',
-            interfaceClass: '接口二'
-          },
-          {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
-            fill: 'No',
-            note: 'none',
-            interfaceClass: '接口二'
-        },
-        ],
+        headers:[],
         body:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '23',
+            name: 'address',
+            value: 'string',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口二'
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '24',
+            name: 'work',
+            value: 'string',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -173,18 +148,18 @@ Mock.mock('/api/interfaceList','get', {
         ],
         response:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '25',
+            name: 'code',
+            value: 'string',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口二'
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '26',
+            name: 'list',
+            value: 'array',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -204,36 +179,28 @@ Mock.mock('/api/interfaceList','get', {
         interfaceDetail: 'jiejeiejiie',
         headers:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '31',
+            name: 'token',
+            value: '',
             fill: 'No',
             note: 'none',
             interfaceClass: '接口二'
-          },
-          {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
-            fill: 'No',
-            note: 'none',
-            interfaceClass: '接口二'
-        },
+          }
         ],
         body:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '33',
+            name: 'vistor',
+            value: 'string',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口二'
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '34',
+            name: 'date',
+            value: 'datetime',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -242,18 +209,18 @@ Mock.mock('/api/interfaceList','get', {
         ],
         response:[
           {
-            id: '1',
-            name: 'John Brown',
-            value: 32,
+            id: '35',
+            name: 'code',
+            value: 'int',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
             interfaceClass: '接口二'
           },
           {
-            id: '2',
-            name: 'John Brown',
-            value: 32,
+            id: '36',
+            name: 'object',
+            value: 'object',
             fill: 'No',
             note: 'none',
             defaultValue:'1',
@@ -263,16 +230,14 @@ Mock.mock('/api/interfaceList','get', {
     }
   ]
   let newData = data.filter(item => {
-    if(item.key === key) {
-      return item
-    }
+    return item.key === key
   })
     return {
       'code':0,
       'list': newData,
       'message':'操作成功'
-    }
-    })
+      }
+  })
 
     Mock.mock('/api/allInterface','get', {
       'code':0,
