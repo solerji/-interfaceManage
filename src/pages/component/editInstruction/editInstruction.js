@@ -14,28 +14,40 @@ const { Option } = Select
           labelList: [
             {
               name: '接口名称',
-              type: 'char'
+              type: 'char',
+              ename: 'interfaceName'
             },
             {
               name:'接口类型',
-              type: 'char'
+              type: 'char',
+              ename: 'interfaceClass'
             },
             {
               name: '创建时间',
-              type: 'date'
+              type: 'date',
+              ename: 'interfaceTime'
             },
             {
               name: '创建人',
-              type: 'char'
+              type: 'char',
+              ename: 'createPeople'
             },
             {
               name:'接口描述',
-              type: 'char'
+              type: 'char',
+              ename: 'interfaceDetail'
             }
           ],
           requestList:[],
           responseList: []
         }
+    }
+
+   componentDidMount () {
+      let interData = this.props.interfaceList
+      this.state.labelList.map((item) => {
+        return item.instruction = interData[item.ename]
+      })
     }
 
     handleSubmit = e => {
@@ -82,8 +94,10 @@ const { Option } = Select
                 return (
                     <Form.Item
                     key={ index }
-                    label= {item.name }>
+                    label= {item.name }
+                     placeholder= { item.instruction }>
                    {(this.switchItem(item))}
+
                 </Form.Item>
                 )
             })
@@ -109,7 +123,7 @@ const { Option } = Select
 
   const getData = (state) => {
     return {
-      interfaceList: state.interfaceList.interface,
+      interfaceList: state.interfaceList.interface[0].main[0],
       header: state.interfaceList.interface[0].headers,
       body: state.interfaceList.interface[0].body,
       response: state.interfaceList.interface[0].response

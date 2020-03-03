@@ -51,7 +51,7 @@ class EditableCell extends React.Component {
 
 class EditableTable extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = { data: props.data, editingKey: '', count: 2 };
     this.columns = [
       {
@@ -125,7 +125,23 @@ class EditableTable extends React.Component {
     ];
   }
 
-  isEditing = record => record.key === this.state.editingKey;
+  isEditing = record => record.key === this.state.editingKey
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps) {
+  //     this.setState ({
+  //       // data: nextProps.data
+  //     })
+  //   }
+  // }
+
+  // 取到更新值
+  static getDerivedStateFromProps(nextProps,prevState){
+    //该方法内禁止访问this
+    if (nextProps) {
+      return prevState.data = nextProps.data
+    }
+   }
 
   cancel = () => {
     this.setState({ editingKey: '' });

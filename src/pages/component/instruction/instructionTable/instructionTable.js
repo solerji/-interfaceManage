@@ -105,21 +105,21 @@ class instructionTable extends Component {
           }
           ];
           return (
-            <div>
+            <span>
             <span className={style.font}>Headers</span>
             <Table columns={headerColumns} dataSource={this.props.header} pagination={false} size="middle"  bordered />
             <span className={style.font}>Body</span>
             <Table columns={bodyColumns} dataSource={this.props.body} pagination={false} size="middle" bordered />
             <span className={style.font}>返回参数</span>
             <Table columns={returnColumns} dataSource={this.props.response} pagination={false} size="middle" bordered/>
-           </div>
+           </span>
           )
     }
 }
 
 const getData = (state) => {
   return {
-    interfaceList: state.interfaceList.interface,
+    interfaceList: state.interfaceList.interface[0],
     header: state.interfaceList.interface[0].headers,
     body: state.interfaceList.interface[0].body,
     response: state.interfaceList.interface[0].response

@@ -57,13 +57,17 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '1-1',
         parentId: '1',
-        interfaceName: 'getName',
-        queryValue: 'get',
-        interfaceNote: 'none',
-        interfaceClass: '接口一',
-        interfaceTime: '202009',
-        createPeople: 'solerji',
-        interfaceDetail: 'jiejeiejiie',
+        main: [
+          {
+            interfaceName: 'getName',
+            queryValue: 'get',
+            interfaceNote: 'none',
+            interfaceClass: '接口一',
+            interfaceTime: '202009',
+            createPeople: 'solerji',
+            interfaceDetail: 'jiejeiejiie',
+          }
+        ],
         headers:[
           {
             id: '12',
@@ -123,13 +127,15 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '3-1',
         parentId: '3',
-        interfaceName: 'getBase',
-        queryValue: 'get',
-        interfaceNote: 'none',
-        interfaceClass: '接口二',
-        interfaceTime: '202009',
-        createPeople: 'solerji',
-        interfaceDetail: 'jiejeiejiie',
+        main:[{
+          interfaceName: 'getBase',
+          queryValue: 'get',
+          interfaceNote: 'none',
+          interfaceClass: '接口二',
+          interfaceTime: '202009',
+          createPeople: 'solerji',
+          interfaceDetail: 'jiejeiejiie',
+        }],
         headers:[],
         body:[
           {
@@ -179,13 +185,15 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '3-2',
         parentId: '3',
-        interfaceName: 'getTime',
-        queryValue: 'get',
-        interfaceNote: 'none',
-        interfaceClass: '接口二',
-        interfaceTime: '202009',
-        createPeople: 'solerji',
-        interfaceDetail: 'jiejeiejiie',
+        main: [{
+          interfaceName: 'getTime',
+          queryValue: 'get',
+          interfaceNote: 'none',
+          interfaceClass: '接口二',
+          interfaceTime: '202009',
+          createPeople: 'solerji',
+          interfaceDetail: 'jiejeiejiie',
+        }],
         headers:[
           {
             id: '31',

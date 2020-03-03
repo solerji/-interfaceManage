@@ -76,6 +76,10 @@ class Instruction extends Component {
     this.setState({
       interfaceData: datalist.data.list,
     })
+    let interData = this.props.interfaceList
+    this.state.labelList.map((item) => {
+      return item.instruction = interData[item.ename]
+    })
   }
 
   hideModal = () => {
@@ -133,13 +137,13 @@ class Instruction extends Component {
           </TabPane>
           <TabPane tab="展示" key="2">
             <Descriptions  title="基本信息" size={this.state.size}>
-              {this.state.labelList.map((item, index) => {
-                  return (
-                    <Descriptions.Item key={index} label={item.name}>
-                      {item.instruction}
-                    </Descriptions.Item>
-                  )
-              })}
+            {this.state.labelList.map((item, index) => {
+                return (
+                  <Descriptions.Item key={index} label={item.name}>
+                    {item.instruction}
+                  </Descriptions.Item>
+                )
+            })}
             </Descriptions>
             <InstructionTable></InstructionTable>
           </TabPane>
@@ -166,8 +170,9 @@ class Instruction extends Component {
 }
 
 const getData = (state) => {
+  let interfaceListDemo = state.interfaceList.interface[0].main[0]
   return {
-    interfaceList: state.interfaceList.interface
+    interfaceList: interfaceListDemo
   }
 }
 
