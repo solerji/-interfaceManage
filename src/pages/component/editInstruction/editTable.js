@@ -126,18 +126,17 @@ class EditableTable extends React.Component {
 
   isEditing = record => record.key === this.state.editingKey;
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps) {
-      this.setState({
-        // data: nextProps.data,
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps) {
+  //     this.setState({
+  //       // data: nextProps.data,
+  //     });
+  //   }
+  // }
 
   // 取到更新值
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log(343, nextProps.data);
-    prevState.data = nextProps.data;
+    return (prevState.data = nextProps.data);
   }
 
   cancel = () => {
@@ -166,7 +165,6 @@ class EditableTable extends React.Component {
   }
 
   edit(key) {
-    console.log(2121, key);
     this.setState({ editingKey: key });
   }
 
@@ -177,6 +175,7 @@ class EditableTable extends React.Component {
 
   handleAdd = () => {
     const { count, data } = this.state;
+    console.log(3232, count);
     const newData = {
       key: count,
       name: '',
