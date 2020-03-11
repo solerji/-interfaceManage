@@ -20,13 +20,13 @@ const { Option } = Select
             {
               name:'接口类型',
               type: 'char',
-              ename: 'interfaceClass'
+              ename: 'interfaceType'
             },
-            {
-              name: '创建时间',
-              type: 'date',
-              ename: 'interfaceTime'
-            },
+            // {
+            //   name: '创建时间',
+            //   type: 'date',
+            //   ename: 'interfaceTime'
+            // },
             {
               name: '创建人',
               type: 'char',
@@ -45,19 +45,30 @@ const { Option } = Select
 
    componentDidMount () {
       let interData = this.props.interfaceList
-      this.state.labelList.map((item) => {
-        return item.instruction = interData[item.ename]
-      })
+      if (this.props.interfaceList !== undefined){
+        this.state.labelList.map((item) => {
+          return item.instruction = interData[item.ename]
+        })
+      } else {
+        return null
+      }
     }
 
-    handleSubmit = e => {
-      e.preventDefault();
-      this.props.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values);
-        }
-      });
-    };
+    // 取到更新值
+  static getDerivedStateFromProps(nextProps,prevState){
+      if (nextProps.interfaceList !== undefined) {
+        let interData = nextProps.interfaceList
+        prevState.labelList.map((item) => {
+          return item.instruction = interData[item.ename]
+        })
+      prevState.headers = nextProps.headers
+      prevState.body = nextProps.body
+      prevState.response = nextProps.response
+      return prevState
+    } else {
+      return null
+    }
+   }
 
     switchItem (item) {
       const type = item.type;
@@ -65,7 +76,7 @@ const { Option } = Select
         case 'int':
           return <InputNumber style={{ width: '100%' }} />
         case 'char':
-          return <Input />
+          return <Input value= {item.instruction} />
         case 'date':
           return <DatePicker style={{ width: '100%' }} />
         case 'select':
@@ -88,14 +99,14 @@ const { Option } = Select
         <div>
         <span className={ style.font }>主要信息设置</span>
         <div>
-        <Form layout="inline" onSubmit={this.handleSubmit}>
+        <Form layout="inline">
         {
             this.state.labelList.map((item, index) => {
                 return (
                     <Form.Item
                     key={ index }
                     label= {item.name }
-                     placeholder= { item.instruction }>
+                    >
                    {(this.switchItem(item))}
 
                 </Form.Item>
@@ -122,12 +133,16 @@ const { Option } = Select
   }
 
   const getData = (state) => {
-    return {
-      interfaceList: state.interfaceList.interface[0].main[0],
-      header: state.interfaceList.interface[0].headers,
-      body: state.interfaceList.interface[0].body,
-      response: state.interfaceList.interface[0].response
-    }
+    if (state.interfaceList.interface[0] !== undefined) {
+      return {
+        interfaceList: state.interfaceList.interface[0].mainData,
+        header: state.interfaceList.interface[0].headers,
+        body: state.interfaceList.interface[0].body,
+        response: state.interfaceList.interface[0].response
+      }
+     } else {
+       return null
+     }
   }
 
   export default connect(getData)(editInstructionForm)

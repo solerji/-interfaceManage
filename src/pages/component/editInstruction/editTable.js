@@ -1,6 +1,6 @@
 import { Table, Input, InputNumber, Popconfirm, Form, Button } from 'antd';
-import React from 'react'
-import style from './edit.css'
+import React from 'react';
+import style from './edit.css';
 
 const EditableContext = React.createContext();
 
@@ -51,7 +51,7 @@ class EditableCell extends React.Component {
 
 class EditableTable extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = { data: props.data, editingKey: '', count: 2 };
     this.columns = [
       {
@@ -100,10 +100,7 @@ class EditableTable extends React.Component {
             <span>
               <EditableContext.Consumer>
                 {form => (
-                  <Button
-                    onClick={() => this.save(form, record.key)}
-                    style={{ marginRight: 8 }}
-                  >
+                  <Button onClick={() => this.save(form, record.key)} style={{ marginRight: 8 }}>
                     保存
                   </Button>
                 )}
@@ -114,10 +111,12 @@ class EditableTable extends React.Component {
             </span>
           ) : (
             <span>
-            <Button disabled={editingKey !== ''} onClick={() => this.edit(record.key)}>
-              编辑
-            </Button>
-            <Button disabled={editingKey !== ''} onClick={() => this.handleDelete(record.key)}>删除</Button>
+              <Button disabled={editingKey !== ''} onClick={() => this.edit(record.key)}>
+                编辑
+              </Button>
+              <Button disabled={editingKey !== ''} onClick={() => this.handleDelete(record.key)}>
+                删除
+              </Button>
             </span>
           );
         },
@@ -125,23 +124,20 @@ class EditableTable extends React.Component {
     ];
   }
 
-  isEditing = record => record.key === this.state.editingKey
+  isEditing = record => record.key === this.state.editingKey;
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps) {
-  //     this.setState ({
-  //       // data: nextProps.data
-  //     })
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+      this.setState({
+        // data: nextProps.data
+      });
+    }
+  }
 
   // 取到更新值
-  static getDerivedStateFromProps(nextProps,prevState){
-    //该方法内禁止访问this
-    if (nextProps) {
-      return prevState.data = nextProps.data
-    }
-   }
+  // static getDerivedStateFromProps(nextProps,prevState){
+  //   console.log(343, nextProps.data)
+  //  }
 
   cancel = () => {
     this.setState({ editingKey: '' });
@@ -181,16 +177,18 @@ class EditableTable extends React.Component {
     const { count, data } = this.state;
     const newData = {
       key: count,
-      name: ``,
-      type: 32,
-      concentType: '1',
+      name: '',
+      value: '',
+      fill: '',
+      note: '',
+      interfaceClass: '',
+      example: '',
     };
     this.setState({
       data: [...data, newData],
       count: count + 1,
     });
   };
-
 
   render() {
     const components = {
@@ -217,8 +215,8 @@ class EditableTable extends React.Component {
 
     return (
       <EditableContext.Provider value={this.props.form}>
-        <Button className={ style.addBtn } onClick={this.handleAdd}  style={{ marginBottom: 16 }}>
-         新增
+        <Button className={style.addBtn} onClick={this.handleAdd} style={{ marginBottom: 16 }}>
+          新增
         </Button>
         <Table
           size="small"
@@ -226,13 +224,13 @@ class EditableTable extends React.Component {
           dataSource={this.state.data}
           columns={columns}
           rowClassName="editable-row"
-          pagination={ false }
+          pagination={false}
         />
       </EditableContext.Provider>
     );
   }
 }
 
-const EditableFormTable = Form.create()(EditableTable)
+const EditableFormTable = Form.create()(EditableTable);
 
-export default EditableFormTable
+export default EditableFormTable;

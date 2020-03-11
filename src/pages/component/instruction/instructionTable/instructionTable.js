@@ -118,12 +118,16 @@ class instructionTable extends Component {
 }
 
 const getData = (state) => {
+  if (state.interfaceList.interface[0] !== undefined) {
   return {
     interfaceList: state.interfaceList.interface[0],
     header: state.interfaceList.interface[0].headers,
     body: state.interfaceList.interface[0].body,
     response: state.interfaceList.interface[0].response
   }
+ } else {
+   return null
+ }
 }
 
 export default connect(getData)(instructionTable)

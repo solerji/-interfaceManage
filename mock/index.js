@@ -57,7 +57,7 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '1-1',
         parentId: '1',
-        main: [
+        mainData:
           {
             interfaceName: 'getName',
             queryValue: 'get',
@@ -66,8 +66,8 @@ Mock.mock('/api/interfaceList','get', {
             interfaceTime: '202009',
             createPeople: 'solerji',
             interfaceDetail: 'jiejeiejiie',
-          }
-        ],
+            interfaceType: 'get'
+          },
         headers:[
           {
             id: '12',
@@ -127,7 +127,7 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '3-1',
         parentId: '3',
-        main:[{
+        mainData:{
           interfaceName: 'getBase',
           queryValue: 'get',
           interfaceNote: 'none',
@@ -135,7 +135,8 @@ Mock.mock('/api/interfaceList','get', {
           interfaceTime: '202009',
           createPeople: 'solerji',
           interfaceDetail: 'jiejeiejiie',
-        }],
+          interfaceType: 'get'
+        },
         headers:[],
         body:[
           {
@@ -185,7 +186,7 @@ Mock.mock('/api/interfaceList','get', {
       {
         key: '3-2',
         parentId: '3',
-        main: [{
+        mainData: {
           interfaceName: 'getTime',
           queryValue: 'get',
           interfaceNote: 'none',
@@ -193,7 +194,8 @@ Mock.mock('/api/interfaceList','get', {
           interfaceTime: '202009',
           createPeople: 'solerji',
           interfaceDetail: 'jiejeiejiie',
-        }],
+          interfaceType: 'post'
+        },
         headers:[
           {
             id: '31',

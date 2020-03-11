@@ -34,6 +34,18 @@ class InterfaceList extends Component {
     })
   }
 
+  onOpen = (e) => {
+    // if (e) {
+    //   const { dispatch } = this.props
+    //   dispatch({
+    //     type:'interfaceList/event',
+    //     payload: {
+    //       event: false
+    //     }
+    //   })
+    // }
+  }
+
   render() {
     const sidebar = this.state.menuList.filter(side=>side.isSidebar)
     const childbar = this.state.menuList.filter(side=>side.isChild)
@@ -44,6 +56,7 @@ class InterfaceList extends Component {
         style={{ width: 256 }}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['1']}
+        onOpenChange= {this.onOpen}
         mode="inline"
       >{
         sidebar.map(item=>{

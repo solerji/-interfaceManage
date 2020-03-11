@@ -2,7 +2,8 @@
 export default {
   namespace: "interfaceList",
   state:{
-    interface: []
+    interface: [],
+    event: ''
   },
 
   effects:{
@@ -18,10 +19,22 @@ export default {
     //   return {...state, ...payload}
     // }
     datalist(state, payload) {
-      let newdata = payload.payload.interfaceData
-      let newinterface = state.interface
-      newinterface = newdata
-      return { ...state, interface: newinterface }
+      if (payload.payload.interfaceData) {
+        let newdata = payload.payload.interfaceData
+        let newinterface = state.interface
+        newinterface = newdata
+        return { ...state, interface: newinterface }
+      } else {
+        return null
+      }
+
+    },
+    event(state, payload) {
+      if (payload.payload.event) {
+        return { ...state, event: payload.payload.event}
+      } else {
+        return null
+      }
     }
   },
   subscriptions: {}

@@ -22,7 +22,7 @@ class Instruction extends Component {
         },
         {
           name: '接口类型',
-          ename: 'interfaceClass'
+          ename: 'interfaceType'
         },
         {
           name: '创建时间',
@@ -67,8 +67,11 @@ class Instruction extends Component {
         },
       ],
       interfaceData :[],
-      visible: false
-    };
+      visible: false,
+      isDisabled: false,
+      activeKey: '',
+      saveItem: true
+    }
   }
 
   async componentDidMount () {
@@ -76,11 +79,27 @@ class Instruction extends Component {
     this.setState({
       interfaceData: datalist.data.list,
     })
-    let interData = this.props.interfaceList
-    this.state.labelList.map((item) => {
-      return item.instruction = interData[item.ename]
-    })
+     if (this.props.interfaceList !== undefined) {
+      let interData = this.props.interfaceList
+      this.state.labelList.forEach((item) => {
+        return item.instruction = interData.mainData[item.ename]
+      })
+     }
   }
+
+  // 取到更新值
+  static getDerivedStateFromProps(nextProps,prevState){
+    if (nextProps.interfaceList !== undefined) {
+      let interData = nextProps.interfaceList
+      prevState.labelList.forEach((item) => {
+        return item.instruction = interData.mainData[item.ename]
+    })
+      return prevState.labelList
+    } else {
+      return null
+    }
+   }
+
 
   hideModal = () => {
     this.setState({
@@ -90,7 +109,7 @@ class Instruction extends Component {
 
   handleClick = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   }
 
@@ -114,20 +133,31 @@ class Instruction extends Component {
           interfaceData: resdata.data.list,
         })
       })
+      this.setState({
+        saveItem: true
+      })
+    } else {
+      this.setState({
+        saveItem: false
+      })
     }
+  }
+
+  delete = () => {
+    console.log(21212)
   }
 
   render() {
     const operations = (
-      <Button  onClick={() => this.handleClick()}>
-        新增接口
+      <Button  onClick={() => this.handleClick()} >
+      新增接口
       </Button>
-    );
+    )
 
     return (
       <div style={{ textAlign: 'start' }}>
-        <Tabs tabBarExtraContent={operations} type="card" onTabClick={ this.tabClick }>
-          <TabPane tab="全部接口" key="1" >
+        <Tabs tabBarExtraContent={ this.state.saveItem ? operations : ''} type="card" onTabClick={ this.tabClick }>
+          <TabPane tab="全部接口" key= "1" >
             <Table
               columns={this.state.interfaceColumns}
               dataSource={this.state.interfaceData}
@@ -135,7 +165,7 @@ class Instruction extends Component {
               size="middle"
             ></Table>
           </TabPane>
-          <TabPane tab="展示" key="2">
+          <TabPane tab="展示" key= "2" disabled={this.state.isDisabled}>
             <Descriptions  title="基本信息" size={this.state.size}>
             {this.state.labelList.map((item, index) => {
                 return (
@@ -147,8 +177,8 @@ class Instruction extends Component {
             </Descriptions>
             <InstructionTable></InstructionTable>
           </TabPane>
-          <TabPane tab="编辑" key="3">
-            <EditInstructionForm></EditInstructionForm>
+          <TabPane tab="编辑" key= "3" disabled={this.state.isDisabled}>
+            <EditInstructionForm ref={this.editInstructionForm}></EditInstructionForm>
           </TabPane>
         </Tabs>
         <div></div>
@@ -170,9 +200,13 @@ class Instruction extends Component {
 }
 
 const getData = (state) => {
-  let interfaceListDemo = state.interfaceList.interface[0].main[0]
-  return {
-    interfaceList: interfaceListDemo
+  if (state.interfaceList.interface[0] !== undefined) {
+    let interfaceListDemo = state.interfaceList.interface[0]
+    return {
+      interfaceList: interfaceListDemo
+    }
+  } else {
+    return null
   }
 }
 
