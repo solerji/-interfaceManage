@@ -1,6 +1,5 @@
 import { Table, Input, InputNumber, Popconfirm, Form, Button } from 'antd';
 import React from 'react';
-import style from './edit.css';
 
 const EditableContext = React.createContext();
 
@@ -52,7 +51,13 @@ class EditableCell extends React.Component {
 class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: props.data, editingKey: '', count: 2 };
+    this.state = {
+      data: props.data,
+      editingKey: '',
+      count: 2,
+      tableType: props.type,
+      addData: props.addData,
+    };
     this.columns = [
       {
         title: '名称',
@@ -136,7 +141,7 @@ class EditableTable extends React.Component {
 
   // 取到更新值
   static getDerivedStateFromProps(nextProps, prevState) {
-    return (prevState.data = nextProps.data);
+    return (prevState.data = [...nextProps.data, ...nextProps.addData]);
   }
 
   cancel = () => {
@@ -173,24 +178,6 @@ class EditableTable extends React.Component {
     this.setState({ data: data.filter(item => item.key !== key) });
   };
 
-  handleAdd = () => {
-    const { count, data } = this.state;
-    console.log(3232, count);
-    const newData = {
-      key: count,
-      name: '',
-      value: '',
-      fill: '',
-      note: '',
-      interfaceClass: '',
-      example: '',
-    };
-    this.setState({
-      data: [...data, newData],
-      count: count + 1,
-    });
-  };
-
   render() {
     const components = {
       body: {
@@ -216,9 +203,6 @@ class EditableTable extends React.Component {
 
     return (
       <EditableContext.Provider value={this.props.form}>
-        <Button className={style.addBtn} onClick={this.handleAdd} style={{ marginBottom: 16 }}>
-          新增
-        </Button>
         <Table
           size="small"
           components={components}
